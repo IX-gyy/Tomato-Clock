@@ -1,0 +1,42 @@
+.statistics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-card {
+  border-radius: 12px;
+}
+
+.stat-card-pomodoros {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+}
+
+.stat-card-focus {
+  background: linear-gradient(135deg, #4ecdc4 0%, #6ee7df 100%);
+}
+
+.stat-card-avg {
+  background: linear-gradient(135deg, #45b7d1 0%, #6bc5e0 100%);
+}
+
+.stat-card-best {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.daily-details-card {
+  margin-top: 24px;
+  border-radius: 12px;
+}
+
+.daily-list-item {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.daily-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

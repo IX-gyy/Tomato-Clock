@@ -1,0 +1,76 @@
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.timer-progress-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-progress-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-time {
+  margin: 0;
+  font-size: 64px;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.timer-time.work {
+  color: #ff6b6b;
+}
+
+.timer-time.shortBreak {
+  color: #4ecdc4;
+}
+
+.timer-time.longBreak {
+  color: #45b7d1;
+}
+
+.timer-phase {
+  font-size: 18px;
+  color: #666;
+}
+
+.timer-stats {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-pomodoros {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-pomodoro-icon {
+  font-size: 24px;
+}
+
+.timer-pomodoros-text {
+  font-size: 16px;
+  color: #666;
+}
+
+.timer-hint {
+  font-size: 14px;
+  color: #45b7d1;
+  font-style: italic;
+}

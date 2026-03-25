@@ -9,6 +9,7 @@ import {
 import TimerDisplay from './TimerDisplay';
 import TimerControls from './TimerControls';
 import type { Task, TimerPhase, PomodoroRecord } from '../../types';
+import './index.css';
 
 const { Title, Text } = Typography;
 
@@ -97,34 +98,20 @@ export default function Timer({ activeTask }: TimerProps) {
 
   return (
     <Card
-      style={{
-        maxWidth: 480,
-        margin: '0 auto',
-        borderRadius: 16,
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-      }}
-      bodyStyle={{ padding: 24 }}
+      className="timer-card"
+      styles={{ body: { padding: 24 } }}
     >
       {activeTask && (
         <>
-          <div
-            style={{
-              textAlign: 'center',
-              marginBottom: 16,
-              padding: '12px 16px',
-              background: '#f6ffed',
-              borderRadius: 8,
-              border: '1px solid #b7eb8f',
-            }}
-          >
-            <Text type="secondary" style={{ fontSize: 12 }}>
+          <div className="active-task-section">
+            <Text type="secondary" className="active-task-label">
               当前任务
             </Text>
-            <Title level={4} style={{ margin: '4px 0 0 0', color: '#52c41a' }}>
+            <Title level={4} className="active-task-title">
               {activeTask.title}
             </Title>
           </div>
-          <Divider style={{ margin: '16px 0' }} />
+          <Divider className="timer-divider" />
         </>
       )}
 
@@ -136,9 +123,9 @@ export default function Timer({ activeTask }: TimerProps) {
         consecutivePomodoros={consecutivePomodoros}
       />
 
-      <Divider style={{ margin: '16px 0' }} />
+      <Divider className="timer-divider" />
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="timer-controls-container">
         <TimerControls
           isRunning={isRunning}
           onStart={handleStart}

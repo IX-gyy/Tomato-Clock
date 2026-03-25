@@ -17,6 +17,7 @@ import {
 } from '@ant-design/icons';
 import type { Task } from '../../types';
 import { loadTasks, saveTasks } from '../../utils/storage';
+import './index.css';
 
 const { Text } = Typography;
 
@@ -80,13 +81,10 @@ export default function TaskList({ activeTaskId, onSelectTask }: TaskListProps) 
   return (
     <Card
       title="任务列表"
-      style={{
-        borderRadius: 16,
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-      }}
-      bodyStyle={{ padding: 16 }}
+      className="task-list-card"
+      styles={{ body: { padding: 16 } }}
     >
-      <Space.Compact style={{ width: '100%', marginBottom: 16 }}>
+      <Space.Compact className="task-input-group">
         <Input
           placeholder="添加新任务..."
           value={newTaskTitle}
@@ -115,27 +113,19 @@ export default function TaskList({ activeTaskId, onSelectTask }: TaskListProps) 
           renderItem={(task) => (
             <List.Item
               key={task.id}
-              style={{
-                padding: '12px 0',
-                borderBottom: '1px solid #f0f0f0',
-                backgroundColor: activeTaskId === task.id ? '#f6ffed' : 'transparent',
-                borderRadius: 8,
-                paddingLeft: 12,
-                paddingRight: 12,
-                marginBottom: 8,
-              }}
+              className={`task-list-item ${activeTaskId === task.id ? 'active' : ''}`}
               actions={[
                 <Button
                   type="text"
                   icon={<CheckCircleOutlined />}
                   onClick={() => handleToggleComplete(task.id)}
-                  style={{ color: task.completed ? '#52c41a' : '#999' }}
+                  className={`task-complete-btn ${task.completed ? 'completed' : ''}`}
                 />,
                 <Badge
                   count={task.completedPomodoros}
-                  style={{ backgroundColor: '#ff6b6b' }}
+                  className="task-pomodoro-badge"
                 >
-                  <span style={{ fontSize: 20 }}>🍅</span>
+                  <span className="task-pomodoro-icon">🍅</span>
                 </Badge>,
                 <Button
                   type={activeTaskId === task.id ? 'primary' : 'text'}
@@ -155,12 +145,7 @@ export default function TaskList({ activeTaskId, onSelectTask }: TaskListProps) 
             >
               <List.Item.Meta
                 title={
-                  <Text
-                    style={{
-                      textDecoration: task.completed ? 'line-through' : 'none',
-                      color: task.completed ? '#999' : '#333',
-                    }}
-                  >
+                  <Text className={`task-title ${task.completed ? 'completed' : ''}`}>
                     {task.title}
                   </Text>
                 }

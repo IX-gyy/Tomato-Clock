@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { Layout, Tabs, Typography, theme, ConfigProvider } from 'antd';
 import {
   ClockCircleOutlined,
@@ -10,7 +10,6 @@ import Timer from './components/Timer';
 import TaskList from './components/TaskList';
 import Statistics from './components/Statistics';
 import Settings from './components/Settings';
-import type { Task } from './types';
 import { loadTasks, loadDarkMode } from './utils/storage';
 import './App.css';
 
@@ -20,22 +19,11 @@ const { Title } = Typography;
 function App() {
   const [activeTab, setActiveTab] = useState('timer');
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
-  const [tasks, setTasks] = useState<Task[]>(loadTasks());
-  const [isDarkMode, setIsDarkMode] = useState(() => loadDarkMode());
+  const [isDarkMode] = useState(() => loadDarkMode());
 
   const handleSelectTask = useCallback((taskId: string | null) => {
     setActiveTaskId(taskId);
   }, []);
-
-  useEffect(() => {
-    setTasks(loadTasks());
-  }, [activeTaskId]);
-
-  useEffect(() => {
-    if (activeTab === 'timer') {
-      setTasks(loadTasks());
-    }
-  }, [activeTab]);
 
   const getActiveTask = useCallback(() => {
     const currentTasks = loadTasks();
@@ -52,7 +40,7 @@ function App() {
         </span>
       ),
       children: (
-        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+        <div className="tab-content-container">
           <Timer activeTask={getActiveTask()} />
         </div>
       ),
@@ -66,7 +54,7 @@ function App() {
         </span>
       ),
       children: (
-        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+        <div className="tab-content-container">
           <TaskList
             activeTaskId={activeTaskId}
             onSelectTask={handleSelectTask}
@@ -93,7 +81,7 @@ function App() {
         </span>
       ),
       children: (
-        <div style={{ maxWidth: 800, margin: '0 auto' }}>
+        <div className="tab-content-container-wide">
           <Settings />
         </div>
       ),
@@ -110,45 +98,26 @@ function App() {
         },
       }}
     >
-      <Layout style={{ minHeight: '100vh', background: isDarkMode ? '#141414' : '#f5f5f5' }}>
+      <Layout 
+        className={`app-layout ${isDarkMode ? 'dark' : ''}`}
+        style={{ minHeight: '100vh' }}
+      >
         <Header
-          style={{
-            background: isDarkMode ? '#1f1f1f' : '#fff',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'sticky',
-            top: 0,
-            zIndex: 100,
-          }}
+          className={`app-header ${isDarkMode ? 'dark' : ''}`}
         >
-          <Title
-            level={3}
-            style={{
-              margin: 0,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-            }}
-          >
-            <span style={{ fontSize: 28 }}>🍅</span>
-            <span style={{ color: '#ff6b6b' }}>番茄钟</span>
+          <Title level={3} className="app-title">
+            <span className="app-title-icon">🍅</span>
+            <span className="app-title-text">番茄钟</span>
           </Title>
         </Header>
 
-        <Content style={{ padding: '24px', maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+        <Content className="app-content">
           <Tabs
             activeKey={activeTab}
             onChange={setActiveTab}
             items={items}
             type="card"
-            style={{
-              background: isDarkMode ? '#1f1f1f' : '#fff',
-              padding: '24px',
-              borderRadius: 16,
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-            }}
+            className={`app-tabs ${isDarkMode ? 'dark' : ''}`}
           />
         </Content>
       </Layout>

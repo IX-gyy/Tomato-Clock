@@ -1,0 +1,28 @@
+.settings-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.settings-form {
+  max-width: 600px;
+}
+
+.settings-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-switch-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-volume-section {
+  margin-top: 8px;
+}
+
+.settings-buttons {
+  display: flex;
+  gap: 16px;
+}

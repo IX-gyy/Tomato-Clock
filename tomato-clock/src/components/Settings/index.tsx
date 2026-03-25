@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from 'react';
 import type { TimerSettings } from '../../types';
 import { loadSettings, saveSettings, defaultSettings, loadDarkMode, saveDarkMode } from '../../utils/storage';
+import './index.css';
 
 const { Title, Text } = Typography;
 
@@ -53,15 +54,12 @@ export default function Settings() {
     <>
       <Card
         title="设置"
-        style={{
-          borderRadius: 16,
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-        }}
-        bodyStyle={{ padding: 24 }}
+        className="settings-card"
+        styles={{ body: { padding: 24 } }}
       >
-        <Form layout="vertical" style={{ maxWidth: 600 }}>
-          <Title level={4}>
-            <ClockCircleOutlined style={{ marginRight: 8 }} />
+        <Form layout="vertical" className="settings-form">
+          <Title level={4} className="settings-section-title">
+            <ClockCircleOutlined />
             计时器设置
           </Title>
 
@@ -110,7 +108,7 @@ export default function Settings() {
 
           <Form.Item>
             <Space direction="vertical" style={{ width: '100%' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div className="settings-switch-row">
                 <Text>休息结束后自动开始工作</Text>
                 <Switch
                   checked={settings.autoStartWork}
@@ -119,7 +117,7 @@ export default function Settings() {
                   }
                 />
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div className="settings-switch-row">
                 <Text>工作结束后自动开始休息</Text>
                 <Switch
                   checked={settings.autoStartBreak}
@@ -133,13 +131,13 @@ export default function Settings() {
 
           <Divider />
 
-          <Title level={4}>
-            <SoundOutlined style={{ marginRight: 8 }} />
+          <Title level={4} className="settings-section-title">
+            <SoundOutlined />
             声音设置
           </Title>
 
           <Form.Item>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+            <div className="settings-switch-row">
               <Text>启用提示音</Text>
               <Switch
                 checked={settings.soundEnabled}
@@ -150,7 +148,7 @@ export default function Settings() {
             </div>
 
             {settings.soundEnabled && (
-              <div>
+              <div className="settings-volume-section">
                 <Text type="secondary">音量</Text>
                 <Slider
                   value={settings.volume}
@@ -165,13 +163,13 @@ export default function Settings() {
 
           <Divider />
 
-          <Title level={4}>
-            <BellOutlined style={{ marginRight: 8 }} />
+          <Title level={4} className="settings-section-title">
+            <BellOutlined />
             通知设置
           </Title>
 
           <Form.Item>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="settings-switch-row">
               <Text>启用系统通知</Text>
               <Switch
                 checked={settings.notificationEnabled}
@@ -184,13 +182,13 @@ export default function Settings() {
 
           <Divider />
 
-          <Title level={4}>
-            <MoonOutlined style={{ marginRight: 8 }} />
+          <Title level={4} className="settings-section-title">
+            <MoonOutlined />
             外观设置
           </Title>
 
           <Form.Item>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="settings-switch-row">
               <Text>深色模式</Text>
               <Switch
                 checked={darkMode}
@@ -202,7 +200,7 @@ export default function Settings() {
           <Divider />
 
           <Form.Item>
-            <Space size="large">
+            <Space size="large" className="settings-buttons">
               <Button
                 type="primary"
                 icon={<SaveOutlined />}

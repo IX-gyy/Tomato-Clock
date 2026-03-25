@@ -25,6 +25,73 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.tab-content-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tab-content-container-wide {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.app-header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header.dark {
+  background: #1f1f1f;
+}
+
+.app-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-title-icon {
+  font-size: 28px;
+}
+
+.app-title-text {
+  color: #ff6b6b;
+}
+
+.app-content {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.app-layout {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.app-layout.dark {
+  background: #141414;
+}
+
+.app-tabs {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.app-tabs.dark {
+  background: #1f1f1f;
+}
+
 @media (max-width: 768px) {
   .ant-tabs-tab {
     padding: 8px 12px;

@@ -1,5 +1,6 @@
 import { Progress, Typography } from 'antd';
 import type { TimerPhase } from '../../types';
+import './TimerDisplay.css';
 
 const { Title, Text } = Typography;
 
@@ -47,94 +48,39 @@ export default function TimerDisplay({
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '40px 20px',
-      }}
-    >
-      <div
-        style={{
-          position: 'relative',
-          width: 280,
-          height: 280,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+    <div className="timer-display">
+      <div className="timer-progress-wrapper">
         <Progress
           type="circle"
           percent={progress}
           size={280}
           strokeColor={phaseColors[phase]}
-          trailColor="#f0f0f0"
+          railColor="#f0f0f0"
           strokeWidth={8}
           showInfo={false}
         />
-        <div
-          style={{
-            position: 'absolute',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
+        <div className="timer-progress-content">
           <Title
             level={1}
-            style={{
-              margin: 0,
-              fontSize: 64,
-              fontFamily: 'ui-monospace, Consolas, monospace',
-              color: phaseColors[phase],
-            }}
+            className={`timer-time ${phase}`}
           >
             {formatTime(timeLeft)}
           </Title>
-          <Text
-            style={{
-              fontSize: 18,
-              color: '#666',
-            }}
-          >
+          <Text className="timer-phase">
             {phaseLabels[phase]}
           </Text>
         </div>
       </div>
 
-      <div
-        style={{
-          marginTop: 24,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 12,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
-          <span style={{ fontSize: 24 }}>🍅</span>
-          <Text style={{ fontSize: 16, color: '#666' }}>
+      <div className="timer-stats">
+        <div className="timer-pomodoros">
+          <span className="timer-pomodoro-icon">🍅</span>
+          <Text className="timer-pomodoros-text">
             今日已完成: {completedPomodoros} 个番茄
           </Text>
         </div>
         {phase === 'work' && (
-          <Text
-            style={{
-              fontSize: 14,
-              color: '#45b7d1',
-              fontStyle: 'italic',
-            }}
-          >
+          <Text className="timer-hint">
             🔄 {getLongBreakHint()}
           </Text>
         )}

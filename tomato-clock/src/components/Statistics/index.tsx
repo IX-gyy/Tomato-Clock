@@ -9,11 +9,11 @@ import { useState, useMemo } from 'react';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import { loadRecords } from '../../utils/storage';
-import type { PomodoroRecord } from '../../types';
+import './index.css';
 
 dayjs.extend(isBetween);
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 const { RangePicker } = DatePicker;
 
 interface DailyStats {
@@ -79,13 +79,7 @@ export default function Statistics() {
   return (
     <Card
       title={
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <div className="statistics-header">
           <span>统计报告</span>
           <RangePicker
             value={dateRange}
@@ -101,16 +95,13 @@ export default function Statistics() {
         borderRadius: 16,
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
       }}
-      bodyStyle={{ padding: 24 }}
+      styles={{ body: { padding: 24 } }}
     >
       <Row gutter={[24, 24]}>
         <Col xs={24} sm={12} lg={6}>
           <Card
-            style={{
-              background: 'linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)',
-              borderRadius: 12,
-            }}
-            bodyStyle={{ padding: 20 }}
+            className="stat-card stat-card-pomodoros"
+            styles={{ body: { padding: 20 } }}
           >
             <Statistic
               title={<Text style={{ color: 'rgba(255,255,255,0.8)' }}>总番茄数</Text>}
@@ -123,11 +114,8 @@ export default function Statistics() {
 
         <Col xs={24} sm={12} lg={6}>
           <Card
-            style={{
-              background: 'linear-gradient(135deg, #4ecdc4 0%, #6ee7df 100%)',
-              borderRadius: 12,
-            }}
-            bodyStyle={{ padding: 20 }}
+            className="stat-card stat-card-focus"
+            styles={{ body: { padding: 20 } }}
           >
             <Statistic
               title={<Text style={{ color: 'rgba(255,255,255,0.8)' }}>专注时长</Text>}
@@ -140,11 +128,8 @@ export default function Statistics() {
 
         <Col xs={24} sm={12} lg={6}>
           <Card
-            style={{
-              background: 'linear-gradient(135deg, #45b7d1 0%, #6bc5e0 100%)',
-              borderRadius: 12,
-            }}
-            bodyStyle={{ padding: 20 }}
+            className="stat-card stat-card-avg"
+            styles={{ body: { padding: 20 } }}
           >
             <Statistic
               title={<Text style={{ color: 'rgba(255,255,255,0.8)' }}>日均番茄</Text>}
@@ -157,11 +142,8 @@ export default function Statistics() {
 
         <Col xs={24} sm={12} lg={6}>
           <Card
-            style={{
-              background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-              borderRadius: 12,
-            }}
-            bodyStyle={{ padding: 20 }}
+            className="stat-card stat-card-best"
+            styles={{ body: { padding: 20 } }}
           >
             <Statistic
               title={<Text style={{ color: 'rgba(255,255,255,0.8)' }}>最佳一天</Text>}
@@ -176,27 +158,17 @@ export default function Statistics() {
 
       <Card
         title="每日详情"
-        style={{ marginTop: 24, borderRadius: 12 }}
-        bodyStyle={{ padding: 0 }}
+        className="daily-details-card"
+        styles={{ body: { padding: 0 } }}
       >
         {dailyStats.some(d => d.pomodoros > 0) ? (
           <List
             dataSource={dailyStats.filter(d => d.pomodoros > 0)}
             renderItem={(day) => (
               <List.Item
-                style={{
-                  padding: '16px 24px',
-                  borderBottom: '1px solid #f0f0f0',
-                }}
+                className="daily-list-item"
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    width: '100%',
-                  }}
-                >
+                <div className="daily-item-content">
                   <Text strong>{day.date}</Text>
                   <Space>
                     <Text>

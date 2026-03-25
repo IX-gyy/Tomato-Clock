@@ -1,0 +1,33 @@
+.timer-card {
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.active-task-section {
+  text-align: center;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: #f6ffed;
+  border-radius: 8;
+  border: 1px solid #b7eb8f;
+}
+
+.active-task-label {
+  font-size: 12px;
+}
+
+.active-task-title {
+  margin: 4px 0 0 0;
+  color: #52c41a;
+}
+
+.timer-divider {
+  margin: 16px 0;
+}
+
+.timer-controls-container {
+  display: flex;
+  justify-content: center;
+}

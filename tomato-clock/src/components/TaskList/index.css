@@ -1,0 +1,49 @@
+.task-list-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.task-input-group {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.task-list-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: transparent;
+  border-radius: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-bottom: 8px;
+}
+
+.task-list-item.active {
+  background-color: #f6ffed;
+}
+
+.task-title {
+  text-decoration: none;
+  color: #333;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-complete-btn {
+  color: #999;
+}
+
+.task-complete-btn.completed {
+  color: #52c41a;
+}
+
+.task-pomodoro-badge {
+  background-color: #ff6b6b;
+}
+
+.task-pomodoro-icon {
+  font-size: 20px;
+}
